@@ -1,7 +1,7 @@
 package eratos_sieve;
 import java.util.ArrayList;
 
-public class Sieve {
+public class SieveInsertSort {
 	private ArrayList<Integer> primes = new ArrayList<Integer>();
 	private int markedNums[];
 	private int newPrime = 2;
@@ -9,7 +9,8 @@ public class Sieve {
 	
 	private boolean insert (int insert, int pos) {
 		int tmp = 0;
-		if ((insert == markedNums[pos])) {}
+		if (insert > maxNum) {}
+		else if (insert == markedNums[pos]) {}
 		else if ((insert > markedNums[pos]) && (markedNums[pos] != 0)) {
 			insert(insert, pos + 1);
 		}
@@ -41,16 +42,15 @@ public class Sieve {
 			pass = findPrime (test + 1, pos);
 		}
 		
-		
 		return pass;
 	}
-	public Sieve () {
+	public SieveInsertSort () {
 		this.maxNum = 100;
 		primes.add(newPrime);
 		markedNums =  new int[maxNum + 1];
 	}
 	
-	public Sieve (int maxNum) {
+	public SieveInsertSort (int maxNum) {
 		this.maxNum = maxNum;
 		primes.add(newPrime);
 		markedNums =  new int[maxNum + 1];
@@ -63,11 +63,11 @@ public class Sieve {
 		
 		do {
 			num = seq++ * newPrime;
-		} while ((num <= maxNum) && (insert (num, mCount++)));
+		} while (insert (num, mCount++) || (num < maxNum));
 		
 		mCount = 0;
 		
-		if ((findPrime (newPrime + 1, mCount))) {
+		if (findPrime (newPrime + 1, mCount)) {
 			solve();
 		}
 		
