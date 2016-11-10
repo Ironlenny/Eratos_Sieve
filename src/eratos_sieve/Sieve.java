@@ -28,7 +28,8 @@ public class Sieve {
 	
 	private boolean findPrime (int test, int pos) {
 		boolean pass = false;
-		if (test < markedNums[pos]) {
+		if (test > maxNum) {}
+		else if (test < markedNums[pos]) {
 			primes.add(test);
 			newPrime = test;
 			pass = true;
@@ -39,7 +40,7 @@ public class Sieve {
 		else if (test == markedNums[pos]) {
 			pass = findPrime (test + 1, pos);
 		}
-		else if (test > maxNum) {}
+		
 		
 		return pass;
 	}
@@ -66,7 +67,7 @@ public class Sieve {
 		
 		mCount = 0;
 		
-		if ((num <= maxNum) && (findPrime (newPrime + 1, mCount))) {
+		if ((findPrime (newPrime + 1, mCount))) {
 			solve();
 		}
 		
